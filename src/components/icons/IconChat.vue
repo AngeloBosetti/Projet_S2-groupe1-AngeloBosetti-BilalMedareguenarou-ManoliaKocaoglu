@@ -1,0 +1,10 @@
+<script setup lang="ts">
+</script>
+<template>
+    <div  class="w-12 h-12">
+       <svg width="64" height="65" stroke="Black" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M49 35.1667C49 36.1686 48.602 37.1295 47.8935 37.838C47.185 38.5464 46.2242 38.9444 45.2222 38.9444H22.5556L15 46.5V16.2778C15 15.2758 15.398 14.315 16.1065 13.6065C16.815 12.898 17.7758 12.5 18.7778 12.5H45.2222C46.2242 12.5 47.185 12.898 47.8935 13.6065C48.602 14.315 49 15.2758 49 16.2778V35.1667Z"  stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+           
+</svg>
+    </div>
+</template>

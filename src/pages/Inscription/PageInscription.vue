@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import {  Adduser } from '@/backend';
 import { useRouter } from 'vue-router'
-
+import Button from '@/components/Button.vue';
 const router = useRouter()
 
 const polconfident = ref(false);
@@ -70,16 +70,17 @@ console.log('coucou' + data.value)
                     <label for="polconfident" class="flex items-center text-gray-400">
                         <input type="checkbox" id="polconfident" v-model="polconfident" class="appearance-none mr-2 w-4 h-4 border-2 border-gray-300 rounded-sm bg-none checked:bg-blue-500" />
                         <div class="gap-1">
-                            <span class="text-xs">J'approuve </span>
+                            <span class="text-xs">J'approuve </span> 
+                            <RouterLink to="/PageAccueil"><span class="text-xs">la politique de confidentialité</span></RouterLink> 
                         </div>
                     </label>
-                        <RouterLink to="/PageAccueil"><span class="text-xs">la politique de confidentialité</span></RouterLink> 
+                       
                 
                 </label>
             </div>
             </div>
             <RouterLink  to="/">
-                <button @click="handleValidation()"  class="bg-black w-full rounded-full py-3 font-Marigny font-medium text-2xl text-white mt-3">C'est parti !</button>
+                <Button class="flex justify-center" @click="handleValidation()" text="C'est parti !" />
             </RouterLink>
             
         </form>

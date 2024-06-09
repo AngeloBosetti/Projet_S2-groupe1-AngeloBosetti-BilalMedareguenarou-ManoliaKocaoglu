@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router/auto'
 import IconUser from '@/components/icons/IconUser.vue';
+import IconMysClick from '@/components/icons/IconMysClick.vue';
 import Card from '@/components/Card_Doss_Vac.vue';
 import { onMounted, ref } from 'vue';
 import Pocketbase from 'pocketbase'
@@ -16,8 +17,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="bg-indigo-400 grid-cols-4  h-screen mt-20  ">
+  <main class="grid-cols-4  h-screen mt-20  ">
     <h1 class=" items-center text-xl font-semibold">Dossier Vacance</h1>
+    <IconMysClick />
     <Card />
+    
   </main>
 </template>

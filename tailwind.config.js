@@ -13,8 +13,13 @@ export default {
         purpleYam: '#736CBB',
         blueBell: '#9F9AD2',
         lightGrey: '#9ca3af',
-      }
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        'Phone': 'repeat(4, minmax(0, 1fr))',
+      },
     }
   },
   plugins: []
 }
+ 

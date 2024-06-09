@@ -20,4 +20,13 @@ export async function Adduser(event: Object) {
    }
 }
 
+
+export async function fetchMessages() {
+  const records = await pb.collection('messages').getFullList()
+  return records.map((record) => ({
+    id: record.id,
+    content: record.content,
+    created: record.created
+  }))
+}
 // Copier ici les fonctions developpées en R214 | Système d'information

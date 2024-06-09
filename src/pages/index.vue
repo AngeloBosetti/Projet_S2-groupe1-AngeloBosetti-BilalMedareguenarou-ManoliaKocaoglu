@@ -1,15 +1,24 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router/auto'
+import { useRouter } from 'vue-router'
 import IconUser from '@/components/icons/IconUser.vue';
 import { onMounted, ref } from 'vue';
 import Pocketbase from 'pocketbase'
 
+const pb = new Pocketbase('http://127.0.0.1:8090')
 
 const currentUser = ref()
 onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
+  
 
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
+})
+
+const route = useRouter();
+onMounted(() => {
+    if (pb.authStore.model === null) {
+        route.push('/connexion');
+    }
 })
 </script>
 

@@ -4,6 +4,7 @@ const props = withDefaults(
     variant?: 'default' | 'dark' 
     url?: string
     text?: string
+    icon?: string | object | undefined
   }>(),
   {
     variant: 'default',
@@ -22,6 +23,12 @@ const variantClass = {
     :class="[variantClass[props.variant]]"
     :to="`${url}`"
   >
+  <component
+      v-if="props.icon"
+      :is="props.icon"
+      :class="props.variant === 'dark' ? 'stroke-white' : 'stroke-blueBell'"
+      class="size-5"
+    />
     {{ text }}
   </RouterLink>
 </template>

@@ -18,6 +18,9 @@ export default {
         // Simple 16 column grid
         'Phone': 'repeat(4, minmax(0, 1fr))',
       },
+      animation: {
+        'spin-slow': 'spin 10s ease-in-out infinite',
+      },
     }
   },
   plugins: []

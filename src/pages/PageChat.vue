@@ -18,71 +18,71 @@ onMounted(async () => {
     <main class="mt-20 px-4">
     <h1>Chat</h1>
     <div class="flex items-center gap-4">
-          <RouterLink to="/"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
+          <RouterLink to="/chat"><IconUser /></RouterLink>
           <div>
             <h5 class="text-lg font-semibold">Julie Casser</h5>
             <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>

@@ -8,6 +8,8 @@ const currentUser = ref();
 
 onMounted(async() => {
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
+  console.log(currentUser.value);
+
 });
 </script>
 
@@ -17,14 +19,15 @@ onMounted(async() => {
     <picture class="flex flex-col items-center mt-10 z-10">
       <IconUser class="flex w-48 h-auto" />
     </picture>
-    <div v-if="currentUser" class="flex flex-col justify-center gap-4">
+    <div v-if="currentUser" class="flex bg-gradient-to-r  flex-col justify-center gap-4">
       <p class="p-3 rounded-lg text-xl font-bold text-center">
         {{ currentUser.lastName }} {{ currentUser.firstName }}
       </p>
-      <p class="bg-neutral-300 p-3 rounded-lg text-xs font-semibold">Prénom</p>
-      <p class="bg-neutral-300 p-3 rounded-lg text-xs font-semibold">Description</p>
+      <p class="text-xs font-semibold">Description</p>
+      <p v-if="currentUser.description ==! null" class="bg-neutral-300 p-3 rounded-lg text-xs font-semibold">{{ currentUser.description }}</p>
     </div>
     <Button class="flex items-center justify-center" url="/parametre" text="Paramètres" />
+    <Button class="flex items-center justify-center" url="/" text="MysClick +" />
   </div>
 </template>
 

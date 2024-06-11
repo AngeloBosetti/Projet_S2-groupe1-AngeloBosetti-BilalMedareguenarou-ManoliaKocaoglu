@@ -59,6 +59,7 @@ export type MessagesRecord = {
 
 export type UsersRecord = {
 	avatar?: string
+	description?: string
 	firstName?: string
 	friends?: RecordIdString[]
 	lastName?: string

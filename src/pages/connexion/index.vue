@@ -1,19 +1,20 @@
 <script setup lang="ts">
+import { pb } from '@/backend';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import PocketBase from 'pocketbase';
 import Button from '@/components/Button.vue';
 import IconGoogle from '@/components/icons/IconGoogle.vue';
 
+
 const Gooduser = ref(false);
 
-let pb = null;
+// let pb = null;
 const currentUser = ref();
 const username = ref("");
 const password = ref("");
 
 onMounted(async () => {
-  pb = new PocketBase('http://127.0.0.1:8090');
 
   pb.authStore.onChange(() => {
     currentUser.value = pb.authStore.model

@@ -1,42 +1,32 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import type {Ref} from 'vue';
+import { onMounted, provide, ref } from 'vue';
 import Chat from '@/components/Chat.vue';
-import Pocketbase from 'pocketbase'
+import {pb, Alluser} from '@/backend';
+import convCard from '@/components/convCard.vue';
+
+const userFrom = ref('')
+provide('userFrom', userFrom)
 
 
 const currentUser = ref()
 onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
 
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
 })
 
-const messageCount = ref(0);
-const userInfo = ref<{ username: string } | null>(null);
+// const allMessagesByUsers = await pb.collection('messages').getFullList({
+//                 filter: `from = '${pb.authStore.model?.id}' && to = '${userFrom.value}' || to = '${pb.authStore.model?.id}' && from = '${userFrom.value}' `,
+//                 expand : 'from && to',
+//             });
 
-function setUnreadMessageCount(count: number) {
-  messageCount.value = count;
-}
+const UsersListe = await Alluser()
 
-function setUserInfo(user: { username: string }) {
-  userInfo.value = user;
-}
 </script>
 
 <template>
-    <div class="p-4 bg-gray-800 h-screen text-white flex justify-between items-center ">
-    <div class="flex items-center">
-
-    </div>
-    <div class="flex items-center">
-      <div class="mr-4">
-        <span v-if="messageCount > 0">{{ messageCount }}</span>
-      </div>
-      <div>{{ userInfo?.username }}</div>
-    </div>
- 
-  <main class="p-4">
-    <Chat :setUnreadMessageCount="setUnreadMessageCount" :setUserInfo="setUserInfo"/></main>
+  <div class="mt-20">
+   <h1>Page chat</h1>
+  <convCard v-for="User in UsersListe" :key="User.id" v-bind="User"  />
   </div>
-  
 </template>

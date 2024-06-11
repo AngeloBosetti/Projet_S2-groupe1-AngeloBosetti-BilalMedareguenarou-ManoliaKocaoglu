@@ -1,45 +1,44 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import Chat from '../components/Chat.vue';
+import { onMounted, ref , } from 'vue';
 import Pocketbase from 'pocketbase'
+import { AddMessages, } from '@/backend';
 
+const pb = new Pocketbase('http://127.0.0.1:8090')
 
 const currentUser = ref()
 onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
+
 
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
 })
 
-const messageCount = ref(0);
-const userInfo = ref<{ username: string } | null>(null);
 
-function setUnreadMessageCount(count: number) {
-  messageCount.value = count;
-}
 
-function setUserInfo(user: { username: string }) {
-  userInfo.value = user;
-}
+const newMessage = ref('');
+
+const sendMessage = async () => {
+  if (newMessage.value.trim()) {
+    const record = await pb.collection('messages').create({ content: newMessage.value });
+    AddMessages({
+      id: record.id,
+      content: record.content,
+      from: currentUser.value.username,
+      to: 'angelo.bsti25@gmail.com',
+      created: record.created
+    });
+    newMessage.value = '';
+  }
+};
 </script>
 
 <template>
-  <header class="p-4 bg-gray-800 text-white flex justify-between items-center">
-    <div class="flex items-center">
-      <svg class="w-6 h-6 mr-2" viewBox="0 0 128 128">
-        <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z"></path>
-        <path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"></path>
-      </svg>
-      Your Vue.js App
+  <div class="mt-20">
+    <h1 class="text-xl">test</h1>
+  </div>
+  <div>  
+  </div>
+  <div class="flex ">
+      <input v-model="newMessage" class="flex-1 p-2 border rounded" placeholder="Type a message..." @keyup.enter="sendMessage"/>
+      <button @click="sendMessage" class="ml-2 p-2 bg-blue-500 text-white rounded">Send</button>
     </div>
-    <div class="flex items-center">
-      <div class="mr-4">
-        <span v-if="messageCount > 0">{{ messageCount }}</span>
-      </div>
-      <div>{{ userInfo?.username }}</div>
-    </div>
-  </header>
-  <main class="p-4">
-    <Chat :setUnreadMessageCount="setUnreadMessageCount" :setUserInfo="setUserInfo"/>
-  </main>
 </template>

@@ -1,34 +1,30 @@
 <script setup lang="ts">
-import Pocketbase from 'pocketbase'
-import { RouterLink } from 'vue-router/auto'
-import IconUser from '@/components/icons/IconUser.vue';
+import { pb } from '@/backend';
 import { onMounted, ref } from 'vue';
+import IconUser from '@/components/icons/IconUser.vue';
 import Button from '@/components/Button.vue';
 
-const currentUser = ref()
-onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
+const currentUser = ref();
 
-  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
-})
-
-//
+onMounted(async() => {
+  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
+});
 </script>
 
+
 <template>
-  <div class="flex flex-col mx-4 col-start-1 h-screen mt-20  ">
-    <picture class="flex col-start-1 col-span-4 row-start-1 row-span-1 "><IconUser class="flex items-center" /></picture>
-    
-    <form class="  pt-8  text-Black ">
-          <div class="flex flex-col justify-center gap-4">
-            <p class="text-xs ">Nom</p>
-              <input v-model="username" type="username" class="w-full  font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="Nom">
-            <p class="text-xs ">Prénom</p>
-              <input v-model="username" type="username" class="w-full  font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="Prénom">
-            <p class="text-xs ">Mots de passe</p>
-              <input v-model="password" type="password" class="w-full font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="Votre mots de passe">
-          </div>
-      </form>
-    <Button class="flex items-center justify-center" url="/" text="Paramètres" />
+  <div class="flex flex-col mx-4 col-start-1 h-screen mt-20 gap-5">
+    <picture class="flex flex-col items-center mt-10 z-10">
+      <IconUser class="flex w-48 h-auto" />
+    </picture>
+    <div v-if="currentUser" class="flex flex-col justify-center gap-4">
+      <p class="p-3 rounded-lg text-xl font-bold text-center">
+        {{ currentUser.lastName }} {{ currentUser.firstName }}
+      </p>
+      <p class="bg-neutral-300 p-3 rounded-lg text-xs font-semibold">Prénom</p>
+      <p class="bg-neutral-300 p-3 rounded-lg text-xs font-semibold">Description</p>
+    </div>
+    <Button class="flex items-center justify-center" url="/parametre" text="Paramètres" />
   </div>
 </template>
+

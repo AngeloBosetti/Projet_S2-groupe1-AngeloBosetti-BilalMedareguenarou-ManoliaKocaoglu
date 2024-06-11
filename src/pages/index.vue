@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { RouterLink } from 'vue-router/auto'
 import { useRouter } from 'vue-router'
@@ -24,7 +25,7 @@ onMounted(() => {
 
 <template>
   <main class="bg-blueBell grid-cols-4  h-screen mt-20  " v-scroll-lock="true">
-  <h1 v-if="currentUser" class=" text-center text-2xl font-bold pt-8">Ravi de vous revoir <br> {{ currentUser.firstName }}{{ currentUser.lastName }}</h1>
+  <h1 v-if="currentUser" class=" text-center text-2xl font-bold pt-8">Ravi de vous revoir <br> {{ currentUser.firstName }} {{ currentUser.lastName }}</h1>
   <h5 class="text-base font-semibold m-4 ">Accès rapide</h5>
   <div class="">
     

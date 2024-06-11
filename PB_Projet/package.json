@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "pocketbase": "^0.21.2",
-    "save": "^2.9.0"
-  }
-}

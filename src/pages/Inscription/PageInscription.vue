@@ -35,7 +35,7 @@ const handleValidation = async () => {
     }
 }
 
-console.log('coucou' + data.value)
+
 </script>
 <template>
     <div class="w-screen h-screen mt-20 px-5 flex flex-col gap-5 "  v-scroll-lock="true">

@@ -1,93 +1,36 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router/auto'
-import IconUser from '@/components/icons/IconUser.vue';
-import { onMounted, ref } from 'vue';
-import Pocketbase from 'pocketbase'
+import { onMounted, provide, ref, } from 'vue';
+import {pb, AllFriends} from '@/backend';
+import convCard from '@/components/convCard.vue';
+
+
+const userFrom = ref('')
+provide('userFrom', userFrom)
+
+const friendsList = await AllFriends() as Array<{ expand: { friends: object[] } }>;
 
 
 const currentUser = ref()
-onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
 
-  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
-})
-//
+onMounted(async () => {
+  console.log(typeof friendsList[0]);
+  console.log(currentUser);
+  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
+  console.log(currentUser.value);
+  // UsersListe.value = await pb.collection('users').getFullList();
+  
+});
+
+
+
+
 </script>
 
 <template>
-    <main class="mt-20 px-4">
-    <h1>Chat</h1>
-    <div class="flex items-center gap-4">
-          <RouterLink to="/"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div><div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/PagesChatTest"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-
-    </main>
+  <div class="mt-20">
+   <h1>Page chat</h1>
+  <div v-if="friendsList[0].expand !== undefined">
+    <convCard v-for="User in friendsList[0].expand.friends" :key="User.id" v-bind="User "  />
+  </div>
+  </div>
 </template>

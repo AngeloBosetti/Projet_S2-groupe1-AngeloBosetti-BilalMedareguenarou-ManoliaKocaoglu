@@ -13,6 +13,8 @@ onErrorCaptured((err, instance, info) => {
 
 <template>
   <Header  class="fixed" />
-    <RouterView /> 
+  <Suspense>
+    <RouterView />
+  </Suspense>
   <Footer  />
 </template>

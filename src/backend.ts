@@ -8,34 +8,31 @@ export async function Alluser(){
         return recordAll;
 }
 
+
+
+export async function AllDossVac() {
+  const AllDV = await pb.collection('dossier_vac').getFullList()
+  return AllDV
+}
+
 export async function Adduser(event: Object) {
-   try {
+
        const AddU = await pb.collection('users').create(event);
        return AddU;
-   } catch (error) {
-       return error;
-   }
 }
 export async function AddMessages(event: Object) {
-  try {
+
     const AddM = await pb.collection('messages').create(event)
     return AddM
-  } catch (error) {
-    return error
-  }
+
 }
 
 export async function AllFriends() {
-    try {
       const AllF = await pb.collection('users').getFullList({
         filter: `id='${pb.authStore.model!.id}'`,
         expand: 'friends'
       });
       return AllF;
-    } catch (error) {
-      console.error("Un erreur est survenue lors de la récupération des amis")
-      return error
-    }
 }
 
 export async function AllMessages() {
@@ -56,7 +53,13 @@ export async function UpdtUser(userI: Object , id: string) {
   }
 }
 
-export async function TimeLeft
+// export async function TimeLeft
+
+
+
+
+
+
 // export async function fetchMessages() {
 //   const records = await pb.collection('messages').getFullList()
 //   return records.map((record) => ({

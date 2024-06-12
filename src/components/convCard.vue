@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import RouterLink from 'vue-router';
+import { RouterLink } from 'vue-router';
 import type { UsersResponse } from '@/pocketbase-types';
 import IconUser from './icons/IconUser.vue';
 
-const props = defineProps<UsersResponse>();
+const props = defineProps<UsersResponse<any>>();
 console.log(props);
+
 </script>
 
 <template>
-  <RouterLink to="/chat">
+  <RouterLink to="../chat">
     <div class="flex items-center gap-4">
       <IconUser />
       <div>

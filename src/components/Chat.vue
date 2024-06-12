@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import PocketBase from 'pocketbase';
-import { fetchUserMessages } from '@/backend';
 
 const currentUser = ref()
 onMounted(async () => {
@@ -13,7 +12,7 @@ onMounted(async () => {
 
 const pb = new PocketBase('http://127.0.0.1:8090');  // Remplacez par l'URL de votre instance Pocketbase
 
-const messages = fetchUserMessages(currentUser.value.username,'angelo.bosetti.veille@gmail.com')
+
 const newMessage = ref('');
 
 
@@ -24,6 +23,7 @@ const sendMessage = async () => {
     messages.push({
       id: record.id,
       content: record.content,
+      from: record.content,
       created: record.created
     });
     newMessage.value = '';

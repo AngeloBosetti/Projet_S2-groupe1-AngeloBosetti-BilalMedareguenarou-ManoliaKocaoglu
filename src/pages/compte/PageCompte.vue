@@ -27,7 +27,7 @@ const Description = async () => {
     if (data.value.description === ""  || data.value.email === "") {
         console.log("Veuillez remplir tous les champs");
     } else {
-        Adduser(data.value);
+      UpdtUser(data.value , currentUser.value.id);
         router.push('../');
         console.log(data.value);
         }
@@ -52,7 +52,7 @@ const Description = async () => {
               <input v-model="text" type="Prenom" class="w-full  font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="{{currentUser.firstName}}">
             <p class="text-xs ">Description</p>
               <input v-model="text" type="Description" class="w-full font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="{{currentUser.description}}">
-          </div> 
+        </div> 
       </form>
         <RouterLink  to="/">
             <Button class="flex justify-center" @click="Description()" text="Enregistrer les modifications" />

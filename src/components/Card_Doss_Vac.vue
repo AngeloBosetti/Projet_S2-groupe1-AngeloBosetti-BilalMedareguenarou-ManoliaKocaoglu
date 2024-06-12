@@ -15,6 +15,8 @@ const props =
     personnes?: Array<String>
   }>()
 
+  const TempsRestant = 
+
 </script>
 <template>
   <article class="mx-4 py-5 ">

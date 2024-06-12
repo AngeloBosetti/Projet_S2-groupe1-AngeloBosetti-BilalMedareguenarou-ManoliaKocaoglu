@@ -47,8 +47,16 @@ export async function AllMessages() {
   }
 }
 
+export async function UpdtUser(userI: Object , id: string) {
+  try {
+    const UpdtU = await pb.collection('users').update(id, userI)
+    return UpdtU
+  } catch (error) {
+    return error
+  }
+}
 
-
+export async function TimeLeft
 // export async function fetchMessages() {
 //   const records = await pb.collection('messages').getFullList()
 //   return records.map((record) => ({

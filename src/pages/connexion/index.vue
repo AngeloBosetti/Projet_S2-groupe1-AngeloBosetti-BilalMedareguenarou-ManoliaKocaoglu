@@ -55,7 +55,7 @@ const doLoginOAuth = async () => {
 <template>
     <div class="mt-20  px-4"  v-scroll-lock="true">
       <div>
-        <h1 class="flex pt-10 justify-center text-center text-3xl font-bold">Connecter vous <br>ou créer un compte</h1>
+        <h1 class="flex pt-10 justify-center text-center text-3xl font-bold">Connectez vous <br>ou créez un compte</h1>
       </div>
       
         <h1 class="flex pt-10 justify-center text-center text-lg font-bold" v-if="currentUser">Bienvenue <br>{{ currentUser.firstName }} {{ currentUser.lastName }}</h1>

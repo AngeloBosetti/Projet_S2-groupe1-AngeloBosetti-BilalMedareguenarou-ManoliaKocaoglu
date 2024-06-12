@@ -1,35 +1,48 @@
 <script setup lang="ts">
-import { onMounted, provide, ref, } from 'vue';
-import {pb, AllFriends} from '@/backend';
+import { onMounted, ref, computed } from 'vue';
+import { pb, AllFriends } from '@/backend';
 import convCard from '@/components/convCard.vue';
 
-const userFrom = ref('')
-provide('userFrom', userFrom)
+const userFrom = ref('');
+const searchQuery = ref(''); // Propriété réactive pour le terme de recherche
 
-const friendsList = await AllFriends();
-
-
-const currentUser = ref()
+const friends = ref([]); // Utilisez ref pour rendre réactif
+const currentUser = ref(null);
 
 onMounted(async () => {
-  console.log(typeof friendsList[0]);
-  console.log(currentUser);
+  const friendsData = await AllFriends();
+  friends.value = friendsData;
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
-  console.log(currentUser.value);
-  // UsersListe.value = await pb.collection('users').getFullList();
-  
 });
 
-
-
-
+// Calculer les amis filtrés
+const filteredFriends = computed(() => {
+  if (!searchQuery.value) {
+    return friends.value[0]?.expand?.friends || [];
+  }
+  return friends.value[0]?.expand?.friends.filter(friend =>
+    friend.username.toLowerCase().includes(searchQuery.value.toLowerCase())
+  ) || [];
+});
 </script>
 
 <template>
   <div class="mt-20">
-   <h1>Page chat</h1>
-  <div v-if="friendsList[0].expand !== undefined">
-    <convCard v-for="user in friendsList[0].expand.friends" :key="user.id" v-bind="user"  />
-  </div>
+    
+    <!-- Input de recherche -->
+    <input
+      type="text"
+      v-model="searchQuery"
+      placeholder="Rechercher un ami"
+      class="p-2 border rounded mb-4"
+    />
+    
+    <div v-if="friends[0] && friends[0].expand">
+      <convCard
+        v-for="User in filteredFriends"
+        :key="User.id"
+        v-bind="User"
+      />
+    </div>
   </div>
 </template>

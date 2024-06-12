@@ -3,11 +3,10 @@ import { RouterLink } from 'vue-router/auto'
 import IconMysClick from '@/components/icons/IconMysClick.vue';
 import { onMounted, ref } from 'vue';
 import Pocketbase from 'pocketbase'
-
+import {pb} from '@/backend';
 
 const currentUser = ref()
 onMounted(async () => {
-  const pb = new Pocketbase('http://127.0.0.1:8090')
 
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
 })

@@ -17,12 +17,12 @@ const props = defineProps<DossierVacResponse<any>>();
         /> -->
         <ImgPb :record="props" :filename="props.couverture" />
       </picture>
-      <div
+      <!-- <div
         class="absolute inset-0 flex items-center justify-center gap-3 bg-neutral-500 bg-opacity-20"
       >
         <IconLocker class="w-12 h-12 stroke-White" />
         <p class="text-lg text-White">8J : 12 : 46 : 15</p>
-      </div>
+      </div> -->
     <div class="flex flex-col gap-1 bg-lavenderBlue rounded-b-lg py-5 h-22">
       <div class="flex flex-row items-center gap-8 px-4">
         <h1 class="text-lg font-bold">{{ props.title }}</h1>

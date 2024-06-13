@@ -14,7 +14,8 @@ onMounted(async () => {
 
 <template>
   <main class=" grid-cols-4  h-screen mt-20  ">
-    <h1 class="text-3xl font-bold text-center justify-center pt-12 mx-10">Veux-tu Recontrer Une nouvelle personne ?</h1>
+    <h1 class="text-3xl font-bold text-center justify-center pt-12 mx-10">Veux-tu Rencontrer une nouvelle personne ?</h1>
     <IconMysClick />
+    <Button />
   </main>
 </template>

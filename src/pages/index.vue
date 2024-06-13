@@ -27,10 +27,6 @@ onMounted(() => {
     }
 })
 
-onMounted(async () => {
-  
-  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
-});
 
 
 

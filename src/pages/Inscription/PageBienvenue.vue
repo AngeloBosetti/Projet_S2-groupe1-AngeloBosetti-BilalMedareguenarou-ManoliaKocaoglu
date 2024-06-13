@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Button from '@/components/Button.vue';
+import { RouterLink } from 'vue-router/auto';
 </script>
 <template>
     <circle class="absolute h-screen w-screen -z-10 bg-gradient-to-r from-lavenderBlue via-blueBell to-lavenderBlue"></circle>
@@ -8,6 +9,6 @@ import Button from '@/components/Button.vue';
     <p class="text-White ">Nous vous remercions d'avoir créé un compte et de faire confiance à MysClick. 
         Découvrez, partagez et faites un maximum de rencontres avec notre application mobile.
     </p>
-    <Button text="Continuer" />
+    <RouterLink to="/connexion"><Button text="Continuer" /></RouterLink>
     </div>
 </template>

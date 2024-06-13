@@ -6,7 +6,7 @@ import IconMysClick from '@/components/icons/IconMysClick.vue'
 
 </script>
 <template>
-    <header   class="fixed bg-White w-screen top-0 z-10" v-if="$route.path !== '/connexion' && $route.path !== '/inscription' && $route.path !== '/chat/[id].vue' && $route.path !== '/compte'  && $route.path !== '/compte/CompteChange'">
+    <header   class="fixed bg-White w-screen top-0 z-10" v-if="$route.path !== '/connexion' && $route.path !== '/Inscription/PageInscription' && $route.path !== '/Inscription/PageBienvenue'  && $route.path !== '/chat/[id].vue' && $route.path !== '/compte'  && $route.path !== '/compte/CompteChange'">
         <div class="flex  items-center justify-between p-4">
             <RouterLink to="/"><IconMysClick /></RouterLink>
             <ul>

@@ -25,7 +25,7 @@ const handleValidation = async () => {
         if (polconfident.value === true) {
             if (data.value.password === data.value.passwordConfirm) {
                 Adduser(data.value);
-                router.push('../');
+                router.push('/Inscription/PageBienvenue');
                 console.log(data.value)
             } else {
                 console.log("Les mots de passe ne correspondent pas");
@@ -80,7 +80,7 @@ const handleValidation = async () => {
                 </label>
             </div>
             </div>
-            <RouterLink  to="/">
+            <RouterLink  to="/Inscription/PageBienvenue">
                 <Button class="flex justify-center" @click="handleValidation()" text="C'est parti !" />
             </RouterLink>
             

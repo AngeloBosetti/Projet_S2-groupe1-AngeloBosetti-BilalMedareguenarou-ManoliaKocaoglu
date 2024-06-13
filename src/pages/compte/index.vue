@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { pb } from '@/backend'
 import { onMounted, ref } from 'vue'
@@ -8,6 +9,8 @@ import IconX from '@/components/icons/IconX.vue'
 import IconSettings from '@/components/icons/IconSettings.vue'
 import Button from '@/components/Button.vue'
 
+
+const router = useRouter()
 const currentUser = ref()
 
 onMounted(async () => {
@@ -15,6 +18,11 @@ onMounted(async () => {
   console.log(currentUser.value)
 })
 
+const doLogout = () => {
+  pb.authStore.clear();
+  currentUser.value = null;
+  router.push('/connexion')
+}
 
 </script>
 
@@ -49,6 +57,7 @@ onMounted(async () => {
       <div class="flex flex-col gap-3">
         <Button class="flex items-center justify-center" url="/parametre" text="Paramètres" />
         <Button class="flex items-center justify-center" url="/" text="MysClick +" />
+        <button @click="doLogout">Déconnexion</button>
       </div>
     </div>
   </div>

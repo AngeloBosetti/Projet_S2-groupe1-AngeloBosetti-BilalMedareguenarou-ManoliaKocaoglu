@@ -64,8 +64,8 @@ const doLoginOAuth = async () => {
           <div class="flex flex-col justify-center gap-4">
             <p class="text-xs font-semibold">Nom d'utilisateur</p>
               <input v-model="username" type="username" class="w-full  font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="Votre Nom d'utilisateur">
-            <p class="text-xs font-semibold">Mots de passe</p>
-              <input v-model="password" type="password" class="w-full font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="Votre mots de passe">
+            <p class="text-xs font-semibold">Mot de passe</p>
+              <input v-model="password" type="password" class="w-full font-light placeholder:text-Black px-4 py-2 border-white border-2 rounded-md bg-slate-200/50 " placeholder="mot de passe">
           </div>
       </form>
         <div class="flex flex-col items-center gap-2 mt-6">

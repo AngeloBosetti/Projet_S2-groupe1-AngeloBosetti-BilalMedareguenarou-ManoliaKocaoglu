@@ -1,5 +1,7 @@
-import PocketBase from 'pocketbase'
-import { type TypedPocketBase } from './pocketbase-types.js'
+import PocketBase from 'pocketbase';
+import { type TypedPocketBase } from './pocketbase-types.js';
+
+
 
 export const pb = new PocketBase(import.meta.env.VITE_URL_POCKETBASE) as TypedPocketBase
 
@@ -18,10 +20,9 @@ export async function AllDossVac() {
 export async function Adduser(event: Object) {
 
        const AddU = await pb.collection('users').create(event);
-       return AddU;
+       return AddU
 }
 export async function AddMessages(event: Object) {
-
     const AddM = await pb.collection('messages').create(event)
     return AddM
 
@@ -45,12 +46,8 @@ export async function AllMessages() {
 }
 
 export async function UpdtUser(userI: Object , id: string) {
-  try {
     const UpdtU = await pb.collection('users').update(id, userI)
     return UpdtU
-  } catch (error) {
-    return error
-  }
 }
 
 // export async function TimeLeft

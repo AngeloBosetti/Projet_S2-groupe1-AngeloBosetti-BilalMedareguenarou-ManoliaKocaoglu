@@ -15,17 +15,14 @@ onMounted(async () => {
   console.log(currentUser.value)
 })
 
-const router = useRouter()
-function goBack() {
-  router.back()
-}
+
 </script>
 
 <template>
-  <div class="flex flex-col mx-4 col-start-1 h-screen mt-20 gap-5">
+  <div class="flex flex-col mx-4 col-start-1 h-screen mt-5 gap-5 " v-scroll-lock="true">
     <div class="flex justify-between px-2 pt-4">
-      <button @click="goBack()"><IconX /></button>
-      <RouterLink to="./parametre"><IconSettings /></RouterLink>
+      <RouterLink to="../"><IconX /></RouterLink>
+      <RouterLink to="/compte/CompteChange"><IconSettings /></RouterLink>
     </div>
     <picture class="flex flex-col items-center mt-10 z-10">
       <IconUser class="flex w-48 h-auto" />

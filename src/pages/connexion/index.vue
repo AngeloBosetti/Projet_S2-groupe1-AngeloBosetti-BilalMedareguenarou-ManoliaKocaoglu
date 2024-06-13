@@ -2,7 +2,6 @@
 import { pb } from '@/backend';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import PocketBase from 'pocketbase';
 import Button from '@/components/Button.vue';
 import IconGoogle from '@/components/icons/IconGoogle.vue';
 
@@ -48,6 +47,8 @@ const doLoginOAuth = async () => {
     currentUser.value = pb.authStore.model
 }
 
+
+
 </script>
 
 
@@ -69,7 +70,7 @@ const doLoginOAuth = async () => {
       </form>
         <div class="flex flex-col items-center gap-2 mt-6">
           <div class="flex justify-center gap-5">
-            <Button @click="doLogin" text="Connexion" url="/PageAccueil"/>
+            <Button @click="doLogin" text="Connexion" url="/"/>
             <Button @click="doLoginOAuth" text="Connexion Google" :icon="IconGoogle" />
           </div>
           <div class="flex gap-1">

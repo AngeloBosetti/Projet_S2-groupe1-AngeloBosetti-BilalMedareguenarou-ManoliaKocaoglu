@@ -3,6 +3,7 @@ import {ref} from 'vue'
 import {  Adduser } from '@/backend';
 import { useRouter } from 'vue-router'
 import Button from '@/components/Button.vue';
+import {pb} from '@/backend';
 const router = useRouter()
 
 const polconfident = ref(false);

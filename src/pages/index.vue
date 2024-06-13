@@ -1,17 +1,22 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { RouterLink } from 'vue-router/auto'
-import { useRouter } from 'vue-router'
+import convCard from '@/components/convCard.vue';
+import IconAddUser from '@/components/icons/IconAddUser.vue';
+import { useRouter, useRoute } from 'vue-router';
 import IconUser from '@/components/icons/IconUser.vue';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import Pocketbase from 'pocketbase'
-
-const pb = new Pocketbase('http://127.0.0.1:8090')
+import { pb, AllFriends } from '@/backend';
 
 const currentUser = ref()
-onMounted(async () => {
-  
+const searchQuery = ref(''); // Propriété réactive pour le terme de recherche
+const friends = ref([]); // Utilisez ref pour rendre réactif
+const router = useRouter(); // Initialiser le routeur
+const friendsData = await AllFriends();
 
+onMounted(async () => {
+  friends.value = friendsData;
   currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
 })
 
@@ -21,6 +26,27 @@ onMounted(() => {
         route.push('/connexion');
     }
 })
+
+onMounted(async () => {
+  
+  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null;
+});
+
+
+
+const filteredFriends = computed(() => {
+  if (!searchQuery.value) {
+    return friends.value[0]?.expand?.friends || [];
+  }
+  return friends.value[0]?.expand?.friends.filter(friend =>
+    friend.username.toLowerCase().includes(searchQuery.value.toLowerCase())
+  ) || [];
+});
+
+// Fonction pour accéder à la page de chat avec un ami
+const goToChat = (friendId) => {
+  router.push(`/chat/${friendId}`);
+};
 </script>
 
 <template>
@@ -30,32 +56,20 @@ onMounted(() => {
   <div class="">
     
     <!-- card chat -->
-    <RouterLink to="/PageChat"><div class=" rounded-lg bg-lavenderBlue shadow-md p-4 m-4 ">
+    <RouterLink to="/chat"><div class=" rounded-lg bg-lavenderBlue shadow-md p-4 m-4 ">
       
       <h4 class="text-xl font-medium p-2">Chat</h4>
       <!-- Les derniers messages -->
-      <div class="bg-neutral-50 rounded-md px-4 gap-1">
-        <div class="flex items-center gap-4">
-          <RouterLink to="/"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <RouterLink to="/"><IconUser /></RouterLink>
-          <div>
-            <h5 class="text-lg font-semibold">Julie Casser</h5>
-            <p class="text-md font-meduim">Salut mec comment ca va ? Je voulais te demander un truc ?</p>
-          </div>
-        </div>
+      
+      <div class="flex flex-col bg-neutral-50 rounded-md p-4 gap-4" v-if="friends[0] && friends[0].expand">
+      <RouterLink
+      v-for="User in filteredFriends.slice(0, 3)"
+      :key="User.id"
+      :to="`/chat/${User.id}`"
+      class="cursor-pointer"
+    >
+      <convCard v-bind="User" />
+    </RouterLink>
       </div>
       
     </div>

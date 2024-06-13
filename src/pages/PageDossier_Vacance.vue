@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router/auto'
+// import { RouterLink } from 'vue-router/auto'
 import Card from '@/components/Card_Doss_Vac.vue';
 import { onMounted, ref } from 'vue';
 import {pb, AllDossVac} from '@/backend';

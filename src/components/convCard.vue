@@ -10,15 +10,10 @@ console.log(props);
 
 <template>
   
-    <div class="flex items-center gap-4">
-      <RouterLink to="../chat">
-          <IconUser />
-      </RouterLink>
-      
-      <div>
-        <h5 class="text-lg font-semibold">{{ props.username }}</h5>
+    <div class="flex border-y-2 w-full px-4 items-center gap-4">
+        <IconUser class="my-4" />
+        <h5 class="text-lg font-semibold m-2">{{ props.username }}</h5>
         
-      </div>
     </div>
   
 </template>

@@ -34,14 +34,14 @@ const goToChat = (friendId) => {
 </script>
 
 <template>
-  <div class="flex flex-col mx-4  h-screen mt-20 gap-5 " >
+  <div class="flex flex-col  h-screen mt-20 gap-5 " >
     <!-- Input de recherche et accès à la page recherche d'amis -->
     <div class="fixed flex gap-4 p-4 w-auto justify-between">
       <input class="p-2 border rounded mb-4 w-full" type="text" v-model="searchQuery" placeholder="Rechercher un ami" />
       <RouterLink to="/PageRecherche"><IconAddUser /></RouterLink>
     </div>
     
-    <div class="flex flex-col mt-20 gap-4" v-if="friends[0] && friends[0].expand">
+    <div class="flex flex-col mt-20 gap-2" v-if="friends[0] && friends[0].expand">
       <div
         v-for="User in filteredFriends"
         :key="User.id"

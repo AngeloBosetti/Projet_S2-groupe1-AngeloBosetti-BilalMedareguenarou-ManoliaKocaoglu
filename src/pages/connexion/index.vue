@@ -59,7 +59,7 @@ const doLoginOAuth = async () => {
         <h1 class="flex pt-10 justify-center text-center text-3xl font-bold">Connectez vous <br>ou créez un compte</h1>
       </div>
       
-        <h1 class="flex pt-10 justify-center text-center text-lg font-bold" v-if="currentUser">Bienvenue <br>{{ currentUser.firstName }} {{ currentUser.lastName }}</h1>
+        <h1 class="flex pt-10 justify-center text-center text-lg font-bold" v-if="currentUser">Déjà Connecter en tant que <br>{{ currentUser.firstName }} {{ currentUser.lastName }}</h1>
         <form class="max-w-md  pt-8  text-Black ">
           <div class="flex flex-col justify-center gap-4">
             <p class="text-xs font-semibold">Nom d'utilisateur</p>
@@ -79,8 +79,8 @@ const doLoginOAuth = async () => {
           </div>
         </div>
 
-        <!-- Bouton utiliser pour les test (laisser la au cas ou j'en aurais re-besoin) -->
-        <button @click="doLogout">Déconnexion</button>
+        <!-- Bouton utiliser pour les test (laisser la au cas ou j'en aurais re-besoin)
+        <button v-if="currentUser.value !== null" @click="doLogout">Déconnexion</button> -->
         
     </div>
 </template>

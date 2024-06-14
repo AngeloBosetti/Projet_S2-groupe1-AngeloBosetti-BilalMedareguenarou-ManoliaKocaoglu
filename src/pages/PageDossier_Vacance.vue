@@ -1,24 +1,36 @@
+<template>
+  <div>
+    <h1>Liste des Dossiers de Vacances</h1>
+    <div v-for="dossier in dossiers" :key="dossier.id" class="dossier-card">
+      <!-- Utilisez RouterLink pour créer un lien vers la page de détail de chaque dossier -->
+      <RouterLink :to="`/dossier/${dossier.id}`">
+        <div class="card">
+          <h2>{{ dossier.title }}</h2>
+          <!-- Autres informations du dossier -->
+        </div>
+      </RouterLink>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
-// import { RouterLink } from 'vue-router/auto'
-import Card from '@/components/Card_Doss_Vac.vue';
-import { onMounted, ref } from 'vue';
-import {pb, AllDossVac} from '@/backend';
+import { ref, onMounted } from 'vue';
+import { RouterLink } from 'vue-router/auto';
+import { pb } from '@/backend'; // Assurez-vous d'avoir une instance de PocketBase configurée
 
-
-const currentUser = ref()
+const dossiers = ref([]);
 
 onMounted(async () => {
-
-  currentUser.value = pb.authStore.isValid ? pb.authStore.model : null
-})
-//
-const CardListe = await AllDossVac()
+  try {
+    // Remplacez 'nomDeVotreCollection' par le nom réel de votre collection PocketBase
+    const response = await pb.collection('nomDeVotreCollection').getFullList();
+    dossiers.value = response.map(dossier => ({
+      id: dossier.id,
+      title: dossier.title, // Remplacez 'title' par le champ réel de votre collection
+      // Autres champs nécessaires
+    }));
+  } catch (error) {
+    console.error("Erreur lors de la récupération des dossiers:", error);
+  }
+});
 </script>
-
-<template>
-  <main class="grid-cols-4  h-screen mt-20  ">
-    <h1 class=" items-center text-xl font-semibold">Dossier Vacance</h1>
-    <Card v-for="DossierVacRecord in CardListe" :key="DossierVacRecord.id" v-bind="DossierVacRecord" />
-    
-  </main>
-</template>

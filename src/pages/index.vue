@@ -57,7 +57,7 @@ const goToChat = (friendId) => {
       <h4 class="text-xl font-medium p-2">Chat</h4>
       <!-- Les derniers messages -->
       
-      <div class="flex flex-col bg-neutral-50 rounded-md p-4 gap-4" v-if="friends[0] && friends[0].expand">
+      <div class="flex flex-col bg-neutral-50 rounded-md py-2 gap-4" v-if="friends[0] && friends[0].expand">
       <RouterLink
       v-for="User in filteredFriends.slice(0, 3)"
       :key="User.id"

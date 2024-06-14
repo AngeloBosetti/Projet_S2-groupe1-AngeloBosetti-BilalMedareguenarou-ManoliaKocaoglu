@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue';
 import { RouterLink  } from 'vue-router/auto'
 import IconUser from '@/components/icons/IconUser.vue'
 import IconMysClick from '@/components/icons/IconMysClick.vue'
+import { pb } from '@/backend'
 
 const currentUser = ref()
 
